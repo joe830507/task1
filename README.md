@@ -2,6 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Technology Stack
+- Node.js (v16.14.2)
 - React.js
 - Redux
 - Material UI
