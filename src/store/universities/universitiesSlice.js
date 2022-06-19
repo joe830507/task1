@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getUniversities } from "../../apis/universities";
 
-let count = 0;
-
 const initialState = {
+  idCount: 0,
   data: [],
 };
 
@@ -21,7 +20,7 @@ const universitiesSlice = createSlice({
   reducers: {
     addUniversity: (state) => {
       if (state.data && state.data.length > 0) {
-        state.data = [...state.data, { ...state.data[0], id: ++count }];
+        state.data = [...state.data, { ...state.data[0], id: ++state.idCount }];
       }
     },
     deleteUniversity: (state) => {
@@ -38,7 +37,7 @@ const universitiesSlice = createSlice({
       .addCase(fetchUniversities.fulfilled, (state, action) => {
         state.data = action.payload.map((university) => ({
           ...university,
-          id: ++count,
+          id: ++state.idCount,
         }));
       });
   },
